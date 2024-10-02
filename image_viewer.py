@@ -162,7 +162,6 @@ class ImageBrowser:
 
             # compress image
             # TODO
-            # self.run_process(subprocess.Popen(f"convert {input_image_path} -quality 50 -resize 25% {output_image_path} ; echo '=== COMPRESS DONE ==='", shell=True))
             subprocess.call(f"convert {input_image_path} -quality 50 -resize 25% {output_image_path}", shell=True)
             print("=== COMPRESS DONE ===")
 
