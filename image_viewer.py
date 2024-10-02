@@ -146,15 +146,28 @@ class ImageBrowser:
 
     # TODO HANGS WHEN YOU TRY TO SEND IMAGES WHEN THERE ARE NONE
     def send_image(self):
-        print("=== SEND START ===")
+        print("=== COMPRESS START ===")
         if self.image_files:
-            image_path = os.path.join(self.selected_directory, self.image_files[self.current_image_index])
+
+
+            # select compressed image
+            image_name = self.image_files[self.current_image_index]
+            compressed_image_name = f"compressed-{image_name}"
+            input_image_path = os.path.join(self.selected_directory, image_name)
+            output_image_path = os.path.join(self.selected_directory, compressed_image_name)
             # TODO: If you don't want the send destination hardcoded change the destination line to this:
             # destination = simpledialog.askstring("Send Image", "Enter rsync destination (e.g. user@remote:/path/to/destination):")
-            destination = "cdcl@10.200.142.103:/home/cdcl/spot/cdcl_ws/dtc/uav_images"
+            destination = "amarath1@10.200.142.102:/home/amarath1/ros2_ws/src/dtc_interface/saved_images"
+            # destination = "cdcl@10.200.142.103:/home/cdcl/spot/cdcl_ws/dtc/uav_images"
+
+            # compress image
+            # TODO
+            self.run_process(subprocess.Popen(f"convert {input_image_path} -quality 50 -resize 25% {output_image_path} ; echo '=== COMPRESS DONE ==='", shell=True))
+
+            print("=== SEND START ===")
             if destination:
                 # inplace prevent temp file, DON'T DELETE IT DUMMY
-                self.run_process(subprocess.Popen(f"rsync -az --inplace --progress {image_path} {destination} ; echo '=== SEND DONE ==='", shell=True))
+                self.run_process(subprocess.Popen(f"rsync -az --inplace --progress {output_image_path} {destination} ; echo '=== SEND DONE ==='", shell=True))
 
     def new_test(self):
         # self.run_script("new_test.sh")
