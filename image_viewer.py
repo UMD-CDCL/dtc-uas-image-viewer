@@ -11,13 +11,14 @@ from tkinter import filedialog, messagebox, simpledialog, ttk
         
 class ImageBrowser:
 
-    def __init__(self, root):
+    def __init__(self, root, ip):
 
         # intiialize object and hardcode values
         self.root = root
         self.image_files = []
-        self.ip = "10.200.142.202"
-        self.root.title("No Image")
+        self.ip = ip
+        self.title_header = "RoboScout: "
+        self.root.title(self.title_header+"No Image")
         self.current_image_index = 0
         self.selected_directory = "/home/ctitus/Documents/dtc"
 
@@ -131,7 +132,7 @@ class ImageBrowser:
             img.thumbnail((640, 480))
             self.tk_image = ImageTk.PhotoImage(img)
             self.canvas.create_image(0, 0, anchor=tk.NW, image=self.tk_image)
-            self.root.title(self.image_files[self.current_image_index])
+            self.root.title(self.title_header+self.image_files[self.current_image_index])
 
     def prev_image(self):
         if self.image_files:
