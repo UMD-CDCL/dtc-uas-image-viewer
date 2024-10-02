@@ -152,7 +152,7 @@ class ImageBrowser:
 
             # select compressed image
             image_name = self.image_files[self.current_image_index]
-            compressed_image_name = f"compressed-{image_name}"
+            compressed_image_name = f"{image_name}.compressed"
             input_image_path = os.path.join(self.selected_directory, image_name)
             output_image_path = os.path.join(self.selected_directory, compressed_image_name)
             # TODO: If you don't want the send destination hardcoded change the destination line to this:
