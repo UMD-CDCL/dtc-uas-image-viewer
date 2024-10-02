@@ -161,7 +161,6 @@ class ImageBrowser:
             # destination = "cdcl@10.200.142.103:/home/cdcl/spot/cdcl_ws/dtc/uav_images"
 
             # compress image
-            # TODO
             subprocess.call(f"convert {input_image_path} -quality 50 -resize 25% {output_image_path}", shell=True)
             print("=== COMPRESS DONE ===")
 
