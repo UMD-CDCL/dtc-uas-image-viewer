@@ -17,7 +17,7 @@ class ImageBrowser:
         self.root = root
         self.image_files = []
         self.ip = ip
-        self.title_header = "RoboScout: "
+        self.title_header = "University of Maryland - RoboScout DTC - "
         self.root.title(self.title_header+"No Image")
         self.current_image_index = 0
         self.selected_directory = "/home/ctitus/Documents/dtc"
@@ -122,7 +122,7 @@ class ImageBrowser:
             #self.directory_label.config(text="Directory: " + self.selected_directory)
             self.image_files = [f for f in os.listdir(self.selected_directory) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
             if self.image_files:
-                self.current_image_index = 0
+                self.current_image_index = len(self.image_files)-1
                 self.show_image()
 
     def show_image(self):
