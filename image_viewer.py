@@ -157,10 +157,11 @@ class ImageBrowser:
                 self.run_process(subprocess.Popen(f"rsync -az --inplace --progress {image_path} {destination} ; echo '=== SEND DONE ==='", shell=True))
 
     def new_test(self):
-        self.run_script("new_test.sh")
-        self.root.title("No Image")
-        self.canvas.delete("all")
-        self.image_files = []
+        # self.run_script("new_test.sh")
+        # self.root.title("No Image")
+        # self.canvas.delete("all")
+        # self.image_files = []
+        print("new_test set to no op")
 
 
 if __name__ == "__main__":
