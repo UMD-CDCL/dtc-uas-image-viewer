@@ -157,16 +157,18 @@ class ImageBrowser:
             output_image_path = os.path.join(self.selected_directory, compressed_image_name)
             # TODO: If you don't want the send destination hardcoded change the destination line to this:
             # destination = simpledialog.askstring("Send Image", "Enter rsync destination (e.g. user@remote:/path/to/destination):")
-            destination = "amarath1@10.200.142.102:/home/amarath1/ros2_ws/src/dtc_interface/saved_images"
-            # destination = "cdcl@10.200.142.103:/home/cdcl/spot/cdcl_ws/dtc/uav_images"
+            # destination = "amarath1@10.200.142.102:/home/amarath1/ros2_ws/src/dtc_interface/saved_images"
+            destination = "cdcl@10.200.142.103:/home/cdcl/spot/cdcl_ws/dtc/uav_images"
 
             # compress image
-            subprocess.call(f"convert {input_image_path} -quality 50 -resize 25% {output_image_path}", shell=True)
+            #subprocess.call(f"convert {input_image_path} -quality 50 -resize 25% {output_image_path}", shell=True)
+            subprocess.call(f"convert {input_image_path} -quality 90 {output_image_path}", shell=True)
             print("=== COMPRESS DONE ===")
 
             print("=== SEND START ===")
             if destination:
                 # inplace prevent temp file, DON'T DELETE IT DUMMY
+                #self.run_process(subprocess.Popen(f"rsync -az --inplace --progress {output_image_path} {destination} ; echo '=== SEND DONE ==='", shell=True))
                 self.run_process(subprocess.Popen(f"rsync -az --inplace --progress {output_image_path} {destination} ; echo '=== SEND DONE ==='", shell=True))
 
     def new_test(self):
