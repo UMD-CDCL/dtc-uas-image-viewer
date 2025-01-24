@@ -12,7 +12,7 @@ IP_ADDRESS=$1
 REMOTE_USER="root"
 REMOTE_PATH="/data/images"
 TESTS_DIR="current-tests"
-LOCAL_PATH="$HOME/Documents/dtc"
+LOCAL_PATH="/home/ctitus/DTC/dtc-image-viewer"
 
 # SSH into the remote machine and check for directories
 echo "ssh into $REMOTE_USER@$IP_ADDRESS..."

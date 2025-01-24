@@ -11,7 +11,7 @@ fi
 REMOTE_USER="root"
 IP_ADDRESS=$1
 REMOTE_DIR="/data/images/"
-LOCAL_DIR="$HOME/Documents/dtc"
+LOCAL_DIR="/home/ctitus/DTC/dtc-image-viewer"
 LOG_FILE="$LOCAL_DIR/rsync_log.txt"
 
 # Pull new images from the remote directory and log the names of transferred files

@@ -20,7 +20,7 @@ class ImageBrowser:
         self.title_header = "University of Maryland - RoboScout DTC - "
         self.root.title(self.title_header+"No Image")
         self.current_image_index = 0
-        self.selected_directory = "/home/ctitus/Documents/dtc"
+        self.selected_directory = "/home/ctitus/DTC/dtc-image-viewer"
 
         # style everything
         style = ttk.Style()
@@ -121,6 +121,7 @@ class ImageBrowser:
         if self.selected_directory:
             #self.directory_label.config(text="Directory: " + self.selected_directory)
             self.image_files = [f for f in os.listdir(self.selected_directory) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
+            self.image_files.sort()
             if self.image_files:
                 self.current_image_index = len(self.image_files)-1
                 self.show_image()
