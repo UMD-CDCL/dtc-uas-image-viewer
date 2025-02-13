@@ -6,6 +6,6 @@ if __name__ == "__main__":
 
     # start app
     root = tk.Tk()
-    ip = "10.200.142.202"
+    ip = "10.200.91.52"
     app = image_viewer.ImageBrowser(root,ip)
     root.mainloop()
