@@ -16,6 +16,7 @@ LOG_FILE="$LOCAL_DIR/rsync_log.txt"
 
 # Pull new images from the remote directory and log the names of transferred files
 echo "rsync into $REMOTE_USER@$IP_ADDRESS..."
-rsync -az --ignore-existing --include='*img[0-9][0-9]*' --exclude=* --progress $REMOTE_USER@$IP_ADDRESS:$REMOTE_DIR $LOCAL_DIR
+#rsync -az --ignore-existing --include='*img[0-9][0-9]*' --exclude=* --progress $REMOTE_USER@$IP_ADDRESS:$REMOTE_DIR $LOCAL_DIR
+rsync -az --ignore-existing --progress $REMOTE_USER@$IP_ADDRESS:$REMOTE_DIR $LOCAL_DIR
 
 echo "=== PULL DONE ==="

@@ -5,8 +5,8 @@ waittime=20
 
 echo "= REMOTE START ="
 
-REMOTE_PATH="/home/j1/images"
-cd "$REMOTE_PATH"
+FOLDER_PATH="/home/j1/images"
+cd "$FOLDER_PATH"
 
 # Enable nullglob so patterns that don't match expand to nothing
 shopt -s nullglob
@@ -55,7 +55,7 @@ gst-launch-1.0 -e \
   videoconvert ! \
   'video/x-raw,format=RGB' ! \
   pngenc ! \
-  multifilesink location="${HEADER}_rgb_${BATCH_TS}.png" &
+  multifilesink location="$FOLDER_PATH/${HEADER}_rgb_${BATCH_TS}.png" &
   
 # Let the pipeline run for a few seconds for image to stabilize, then kill it
 PIPE_PID=$!
@@ -73,7 +73,7 @@ gst-launch-1.0 -e \
   video/x-raw,width=640,height=512,format=I420 ! \
   videoconvert ! \
   pngenc ! \
-  multifilesink location="${HEADER}_thermal_${BATCH_TS}.png"
+  multifilesink location="$FOLDER_PATH/${HEADER}_thermal_${BATCH_TS}.png"
 
 
 echo "All images captured successfully."
