@@ -11,7 +11,7 @@ fi
 
 IP_ADDRESS="$1"
 REMOTE_USER="j1"
-REMOTE_SCRIPT="/home/j1/dtc-snapshot.sh"
+REMOTE_SCRIPT="/home/j1/snapshot.sh"
 
 echo "ssh into $REMOTE_USER@$IP_ADDRESS..."
 ssh "$REMOTE_USER@$IP_ADDRESS" "bash \"$REMOTE_SCRIPT\""
